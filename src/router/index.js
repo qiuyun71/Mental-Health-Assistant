@@ -1,17 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import BackLayout from '../views/BackLayout.vue'
 
-const routes = [
+const backRoutes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '/back',
+    component: BackLayout,
+    children: [
+      {
+        path: '/back/dashboard',
+        component: () => import('../views/Dashboard.vue'),
+      }
+    ]
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes: backRoutes,
 })
 
 export default router
